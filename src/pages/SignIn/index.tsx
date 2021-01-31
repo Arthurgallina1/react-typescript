@@ -4,12 +4,17 @@ import * as Styles from "./styles";
 //import * as S or { Container } ...
 
 function SignIn() {
-    const { signed, setSigned } = useContext(AuthContext);
+    const { user, loading, signIn, signed } = useContext(AuthContext);
+
+    function handleSignIn() {
+        signIn();
+    }
     return (
         <Styles.Container>
-            <Styles.Button onClick={() => setSigned(!signed)}>
+            <Styles.Button onClick={handleSignIn}>
                 {signed ? "ola0r " : "tchau"}Olar
             </Styles.Button>
+            {user.name && <span>Welcome {user.name}</span>}
         </Styles.Container>
     );
 }
