@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/auth";
+import { useAuth } from "../../context/auth";
+import useConsole from "../../hooks/useConsole";
 import * as Styles from "./styles";
 //import * as S or { Container } ...
 
 function Dashboard() {
-    const { user, loading, signIn, signed } = useContext(AuthContext);
+    const { user } = useAuth();
+
+    useConsole(JSON.stringify(user));
 
     return <Styles.Container>dashboard</Styles.Container>;
 }

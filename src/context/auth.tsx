@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import { useHistory } from "react-router";
 import app from "../services/api";
 
@@ -88,4 +88,10 @@ function AuthProvider({ children }: IProps) {
     );
 }
 
-export { AuthContext, AuthProvider };
+function useAuth() {
+    const context = useContext(AuthContext);
+
+    return context;
+}
+
+export { AuthContext, AuthProvider, useAuth };
