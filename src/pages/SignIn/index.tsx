@@ -12,7 +12,7 @@ function SignIn() {
     return (
         <Styles.Container>
             <Styles.Button onClick={handleSignIn}>
-                {signed ? "ola0r " : "tchau"}Olar
+                {signed ? "Signed " : "Nao signed"} Logar
             </Styles.Button>
             {user.name && <span>Welcome {user.name}</span>}
         </Styles.Container>

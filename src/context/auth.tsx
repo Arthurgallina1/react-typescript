@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useHistory } from "react-router";
 import app from "../services/api";
 
 interface IUser {
@@ -23,13 +24,14 @@ const initialState = {
     signIn: () => {},
     token: "",
     user: { name: "", id: 0 },
-    loading: false,
+    loading: true,
 };
 
 //generics
 const AuthContext = createContext<IAuthContextData>(initialState);
 
 function AuthProvider({ children }: IProps) {
+    const history = useHistory();
     const [user, setUser] = useState<IUser>(initialState.user);
     const [loading, setLoading] = useState(initialState.loading);
     const [token, setToken] = useState(initialState.token);
@@ -41,9 +43,11 @@ function AuthProvider({ children }: IProps) {
         if (storedToken && storedUser) {
             setUser(JSON.parse(storedUser));
             setToken(storedToken);
+            setSigned(true);
             app.defaults.headers.authorization = `Bearer ${storedToken}`;
-            console.log("rehydrated");
+            console.log("rehydrated", storedToken, storedUser);
         }
+        setLoading(false);
     }, []);
 
     function signIn() {
@@ -68,11 +72,8 @@ function AuthProvider({ children }: IProps) {
             setUser({ name: data.username, id: data.userId });
             setToken(data.token);
             setLoading(false);
-            return {
-                token: "123",
-                username: "arthur",
-                userId: 1,
-            };
+            // history.push("/dashboard");
+            console.log("oi");
         } catch (err) {
             console.log(err);
         }
