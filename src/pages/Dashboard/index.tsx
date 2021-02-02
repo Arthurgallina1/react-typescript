@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { useAuth } from "../../context/auth";
 import useConsole from "../../hooks/useConsole";
 import * as Styles from "./styles";
