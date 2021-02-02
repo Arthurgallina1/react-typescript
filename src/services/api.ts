@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const app = axios.create({
-    baseURL: 'localhost:3000'
+    baseURL: 'https://jsonplaceholder.typicode.com'
 })
 
 export default app

@@ -10,5 +10,11 @@ export const Button = styled.button`
     border: 0;
     max-width: 80%;
     background-color: ${(props) => (props.disabled ? props.theme.colors.primary : props.theme.colors.secondary )}
+`
+
+export const Navbar = styled.div`
+    border: 0;
+    padding: 20px;
+    background: blue;
 
 `
