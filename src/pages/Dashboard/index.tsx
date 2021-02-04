@@ -5,6 +5,7 @@ import * as Styles from "./styles";
 //import * as S or { Container } ...
 import api from "../../services/api";
 import Person from "../../components/Person";
+import LayoutEff from "../../components/LayoutEff";
 enum Status {
     todo,
     progress,
@@ -107,6 +108,7 @@ function Dashboard() {
                 birthDate={new Date("2020-01-01")}
                 location={{ long: "0", lat: "0", height: 0 }}
             />
+            <LayoutEff />
         </Styles.Container>
     );
 }
