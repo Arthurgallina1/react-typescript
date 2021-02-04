@@ -4,6 +4,7 @@ import useConsole from "../../hooks/useConsole";
 import * as Styles from "./styles";
 //import * as S or { Container } ...
 import api from "../../services/api";
+import Person from "../../components/Person";
 enum Status {
     todo,
     progress,
@@ -32,7 +33,7 @@ function printLabel(labeledObj: LabeledValue) {
     console.log(labeledObj.label);
 }
 let myObj = { size: 10, label: "size 10 obj" };
-printLabel(myObj);
+// printLabel(myObj);
 
 interface SquareConfig {
     color?: string;
@@ -60,6 +61,16 @@ function createSquare(config: SquareConfig): { color: string; area: number } {
     return newSq;
 }
 createSquare({ color: "blue", width: 20 });
+
+function buildName(firstName: string, lastName?: string) {
+    return firstName + " " + lastName;
+}
+// buildName("art");
+
+function buildFullName(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+}
+// buildFullName("art", "tuca", "123");
 
 function Dashboard() {
     const [todos, setTodos] = useState<todoArray>([]);
@@ -91,6 +102,11 @@ function Dashboard() {
     return (
         <Styles.Container>
             <Styles.Navbar>Olar</Styles.Navbar>
+            <Person
+                name='Arthur'
+                birthDate={new Date("2020-01-01")}
+                location={{ long: "0", lat: "0", height: 0 }}
+            />
         </Styles.Container>
     );
 }
